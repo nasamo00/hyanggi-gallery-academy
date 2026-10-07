@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="아로마와 배움으로 몸과 마음을 돌보고, 나만의 경험을 새로운 일로 연결하는 시간입니다.">
+  <title>나를 돌보는 일이, 나의 일이 되도록</title>
+  <style>
+    :root {
+      --ink: #183d36;
+      --forest: #0b5e53;
+      --leaf: #39906e;
+      --mint: #dceee5;
+      --paper: #f8f7f1;
+      --sand: #eee7d7;
+      --white: #ffffff;
+      --line: rgba(24, 61, 54, .15);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Malgun Gothic", "Apple SD Gothic Neo", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .wrap { width: min(100% - 40px, 760px); margin: 0 auto; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 24px 0 72px;
+      background: linear-gradient(150deg, #e8f3ed 0%, #f8f7f1 67%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -120px;
+      bottom: -95px;
+      border: 38px solid rgba(57, 144, 110, .18);
+      border-radius: 54% 46% 62% 38%;
+      transform: rotate(-22deg);
+    }
+    .brand { margin: 0; font-size: .9rem; font-weight: 700; letter-spacing: .04em; color: var(--forest); }
+    .eyebrow { margin: 60px 0 16px; font-size: .95rem; font-weight: 700; color: var(--leaf); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 20px;
+      font-family: Georgia, "Nanum Myeongjo", serif;
+      font-size: clamp(2.25rem, 10vw, 4.4rem);
+      line-height: 1.22;
+      letter-spacing: -.055em;
+      word-break: keep-all;
+    }
+    .lead { position: relative; z-index: 1; max-width: 33rem; margin-bottom: 30px; font-size: 1.08rem; word-break: keep-all; }
+    .button {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 26px;
+      border-radius: 999px;
+      background: var(--forest);
+      color: var(--white);
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 10px 20px rgba(11, 94, 83, .18);
+    }
+    .button:hover, .button:focus-visible { background: #07483f; outline: 3px solid rgba(57, 144, 110, .35); outline-offset: 3px; }
+
+    .scent-test { padding: 34px 0; background: #f1eadb; }
+    .scent-test-card { padding: 28px 24px; border: 1px solid rgba(24, 61, 54, .12); border-radius: 20px; background: rgba(255,255,255,.78); box-shadow: 0 14px 34px rgba(24,61,54,.07); }
+    .scent-test-card p { margin: 0 0 14px; word-break: keep-all; }
+    .scent-test-card p:last-of-type { margin-bottom: 20px; }
+    .scent-test-title { margin: 0 0 12px; font-family: Georgia, "Nanum Myeongjo", serif; font-size: clamp(1.5rem, 6vw, 2.15rem); line-height: 1.3; letter-spacing: -.04em; }
+    .scent-test-link { color: var(--forest); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+
+    section { padding: 68px 0; }
+    h2 { font-family: Georgia, "Nanum Myeongjo", serif; font-size: 2rem; line-height: 1.25; letter-spacing: -.04em; word-break: keep-all; }
+    .section-intro { margin-bottom: 30px; color: #46625b; word-break: keep-all; }
+    .for-you { background: var(--white); }
+    .persona {
+      padding: 28px 24px;
+      border-left: 4px solid var(--leaf);
+      background: #eff7f2;
+    }
+    .persona p { margin-bottom: 16px; word-break: keep-all; }
+    .persona p:last-child { margin-bottom: 0; }
+    .persona strong { color: var(--forest); }
+
+    .faq-list { border-top: 1px solid var(--line); }
+    details { border-bottom: 1px solid var(--line); }
+    summary {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 22px 2px;
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: 700;
+      list-style: none;
+      word-break: keep-all;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::before { content: "Q"; color: var(--leaf); font-family: Georgia, serif; font-size: 1.25rem; }
+    summary::after { content: "+"; margin-left: auto; color: var(--forest); font-size: 1.5rem; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    .answer { padding: 0 2px 24px 38px; color: #416058; word-break: keep-all; }
+    .answer p { margin: 0; }
+    .answer b { color: var(--ink); }
+
+    .proof { background: var(--ink); color: var(--white); }
+    .proof h2 { color: var(--white); }
+    .placeholder { padding: 26px 22px; border: 1px dashed rgba(255,255,255,.52); color: #d9e9e1; }
+    footer { padding: 24px 0 32px; background: var(--ink); color: rgba(255,255,255,.72); font-size: .83rem; }
+
+    @media (min-width: 680px) {
+      .wrap { width: min(100% - 72px, 920px); }
+      .hero { padding: 32px 0 98px; }
+      .eyebrow { margin-top: 92px; }
+      .persona { padding: 36px; }
+      section { padding: 88px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="brand">AROMA · HEALING · NEW CHAPTER</p>
+      <p class="eyebrow">인생 2막을 준비하는 당신에게</p>
+      <h1>아로마로 나를 돌보고,<br>내 경험을 새로운 일로 만드세요.</h1>
+      <p class="lead">향기로 몸과 마음에 여유를 찾고, 당신이 살아온 이야기를 사람을 돕는 배움과 수입으로 이어 갑니다.</p>
+    <a class="button" href="https://forms.gle/nZPK6ARdK2Qr6Jo9A" target="_blank" rel="noopener noreferrer">상담 신청</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="scent-test" aria-labelledby="scent-test-title">
+      <div class="wrap">
+        <div class="scent-test-card">
+          <p class="brand">향기로 나를 이해하다</p>
+          <h2 class="scent-test-title" id="scent-test-title">1분 만에 끝내는 내 타고난 향기 테스트</h2>
+          <p>내 타고난 성향, 지금 몸과 마음의 컨디션, 그리고 끌리는 향의 힌트까지.</p>
+          <p>내가 어떤 향으로 태어났는지 지금 바로 확인해 보세요!</p>
+          <a class="scent-test-link" href="scent-test.html">👇 나만의 타고난 향 진단하기 →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="for-you" aria-labelledby="for-you-title">
+      <div class="wrap">
+        <h2 id="for-you-title">이런 분께</h2>
+        <div class="persona">
+          <p><strong>아로마, 미술, 상담, 교육처럼 사람을 돕는 경험이 있으신 분</strong><br>이제는 그 경험을 나만의 일로 키워 보고 싶습니다.</p>
+          <p><strong>무엇을 가르치고 어떻게 알릴지 막막하신 분</strong><br>강의와 콘텐츠를 처음부터 차근차근 만들고 싶습니다.</p>
+          <p><strong>내가 해 온 일이 정말 가치 있을지 망설이시는 분</strong><br>나를 회복하며, 오래 할 수 있는 수입의 길도 함께 찾고 싶습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="faq-title">
+      <div class="wrap">
+        <h2 id="faq-title">자주 묻는 질문</h2>
+        <p class="section-intro">처음 시작하는 마음에서 나온 질문에 답합니다.</p>
+        <div class="faq-list">
+          <details>
+            <summary>50대에 할 수 있는 나만의 일 찾기</summary>
+            <div class="answer"><p><b>지금까지 해 온 일과 좋아하는 일을 먼저 정리하면 됩니다.</b><br>아로마와 사람을 돌본 경험은 충분히 나만의 수업이 될 수 있습니다.<br>작게 시작해도, 내 이름으로 오래 할 일을 만들 수 있습니다.</p></div>
+          </details>
+          <details>
+            <summary>아로마 자격증과 힐링 강사 과정 차이</summary>
+            <div class="answer"><p><b>자격증은 지식을 증명하고, 강사 과정은 수업을 만드는 데 도움을 줍니다.</b><br>어떤 일을 하고 싶은지에 따라 필요한 배움이 달라집니다.<br>내가 전하고 싶은 경험부터 찾으면 선택이 쉬워집니다.</p></div>
+          </details>
+          <details>
+            <summary>50대가 AI를 배워도 따라갈 수 있을까</summary>
+            <div class="answer"><p><b>네, 필요한 것부터 천천히 배우면 충분합니다.</b><br>AI는 어려운 기술이 아니라 내 글과 수업을 돕는 도구입니다.<br>컴퓨터가 익숙하지 않아도 한 단계씩 함께 익힐 수 있습니다.</p></div>
+          </details>
+          <details>
+            <summary>아로마 강사 교육 비용</summary>
+            <div class="answer"><p><b>비용보다 내게 맞는 배움과 실제로 써 볼 기회를 먼저 보세요.</b><br>배운 내용을 내 수업과 콘텐츠로 이어 갈 수 있어야 합니다.<br>상담을 통해 현재 목표에 맞는 시작점을 함께 찾습니다.</p></div>
+          </details>
+          <details>
+            <summary>아로마 힐링 강사 과정 후기</summary>
+            <div class="answer"><p><b>좋은 후기는 배움 뒤에 무엇이 달라졌는지를 보여 줍니다.</b><br>나를 돌보는 시간에서 시작해 자신만의 수업을 만든 변화가 중요합니다.<br>이곳의 실제 경험과 사례는 차례로 채워 드립니다.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" aria-labelledby="proof-title">
+      <div class="wrap">
+        <h2 id="proof-title">함께한 변화</h2>
+        <div class="placeholder">[근거 채우기]</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">나를 돌보는 시간이, 나다운 일이 되도록</div>
+  </footer>
+</body>
+</html>
